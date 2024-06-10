@@ -1,0 +1,165 @@
+/* Main CSS */
+body {
+    background-color: #79C072;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Wrapper to position the button */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 21vh; /* Half viewport height */
+    margin-top: -160px;
+    margin-left: 950px;
+}
+
+/* Animated Button Styles */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px; /* Adjust padding for a better button look */
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    background: linear-gradient(45deg, #528d4c, #96dd90);
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.button-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 60%);
+    transition: transform 0.6s ease;
+    transform: scale(0);
+    z-index: -1;
+}
+
+.button-container:hover::before {
+    transform: scale(1);
+}
+
+.button-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px; /* Adjust margin for better spacing */
+}
+
+.button-text {
+    font-size: 24px; /* Font size for the main text */
+    font-family: 'STIX Two Text', serif;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.highlight {
+    font-size: 22px; /* Font size for the highlight text */
+    font-family: 'Poppins', sans-serif;
+    color: #FBC6DA;;
+    font-weight: 600;
+    margin-top: -2px; /* Adjust margin for better spacing */
+    margin-left: 10px; /* Move text slightly to the right */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.circle-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Adjust size of the circle */
+    height: 50px; /* Adjust size of the circle */
+    border-radius: 50%;
+    transition: background-color 0.4s ease, transform 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.circle-arrow i {
+    font-size: 24px; /* Font size for the icon */
+    color: black;
+    transition: transform 0.4s ease;
+}
+
+.button-container:hover .circle-arrow {
+    background-color: #FBC6DA;
+    transform: rotate(360deg);
+}
+
+.button-container:hover .circle-arrow i {
+    color: black;
+    transform: translateX(5px);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .wrapper {
+        margin-left: 0;
+        height: 100vh; /* Full viewport height */
+    }
+
+    .button-container {
+        padding: 12px 24px; /* Adjust padding for smaller screens */
+    }
+
+    .button-text {
+        font-size: 20px; /* Adjust font size for smaller screens */
+    }
+
+    .highlight {
+        font-size: 18px; /* Adjust font size for smaller screens */
+        margin-left: 5px; /* Adjust margin for smaller screens */
+    }
+
+    .circle-arrow {
+        width: 40px; /* Adjust size of the circle for smaller screens */
+        height: 40px; /* Adjust size of the circle for smaller screens */
+    }
+
+    .circle-arrow i {
+        font-size: 20px; /* Adjust icon size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        height: 20vh; /* Full viewport height */
+    }
+
+    .button-container {
+        padding: 10px 20px; /* Adjust padding for smaller screens */
+        margin-bottom: 50px;
+    }
+
+    .button-text {
+        font-size: 18px; /* Adjust font size for smaller screens */
+    }
+
+    .highlight {
+        font-size: 16px; /* Adjust font size for smaller screens */
+        margin-left: 5px; /* Adjust margin for smaller screens */
+    }
+
+    .circle-arrow {
+        width: 35px; /* Adjust size of the circle for smaller screens */
+        height: 35px; /* Adjust size of the circle for smaller screens */
+    }
+
+    .circle-arrow i {
+        font-size: 18px; /* Adjust icon size for smaller screens */
+    }
+}

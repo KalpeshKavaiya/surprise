@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wish</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="intro-section">
+        <div class="birthday-content">
+            <img src="/banner/HBH.gif" alt="Birthday GIF Desktop" class="birthday-gif birthday-desktop">
+            <img src="/banner/ut.gif" alt="Birthday GIF Mobile" class="birthday-gif birthday-mobile">
+        </div>
+        <div class="slider-container">
+            <div class="slider">
+                <div id="sliderButton" class="slider-button">
+                    <span class="slider-icon"><i class="fas fa-chevron-right"></i></span>
+                    <div class="left-content">🎉</div>
+                </div>
+                <span class="slider-text">Slide right</span>
+            </div>
+        </div>
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const sliderButton = document.getElementById('sliderButton');
+                const slider = sliderButton.parentElement;
+                const birthdayContent = document.querySelector('.birthday-content');
+                const sliderText = document.querySelector('.slider-text');
+                const leftContent = document.querySelector('.left-content');
+
+                const nextPagePath = 'Dance With joy.html'; // Path of the next slide or page
+
+                let isDragging = false;
+                let startX = 0;
+                let startLeft = 0;
+
+                sliderButton.addEventListener('mousedown', startDragging);
+                document.addEventListener('mousemove', dragSlider);
+                document.addEventListener('mouseup', stopDragging);
+
+                sliderButton.addEventListener('transitionend', resetOpacity);
+
+                function startDragging(event) {
+                    isDragging = true;
+                    startX = event.clientX;
+                    startLeft = sliderButton.offsetLeft;
+                    sliderButton.style.transition = 'none';
+                }
+
+                function dragSlider(event) {
+                    if (isDragging) {
+                        const offsetX = event.clientX - startX;
+                        let newLeft = startLeft + offsetX;
+                        const maxLeft = slider.offsetWidth - sliderButton.offsetWidth - 6; // Adjust for initial left margin
+                        newLeft = Math.max(6, Math.min(newLeft, maxLeft)); // Ensure it doesn't go beyond initial margin
+                        sliderButton.style.left = newLeft + 'px';
+                        sliderText.style.opacity = newLeft === maxLeft ? 0 : 1 - (newLeft - 6) / (maxLeft - 6); // Adjust opacity
+                        sliderText.style.left = 130 + ((newLeft - 6) / (maxLeft - 6)) * 130 + 'px'; // Adjust text position
+                    }
+                }
+
+                function stopDragging() {
+                    if (isDragging) {
+                        isDragging = false;
+                        sliderButton.style.transition = 'left 0.3s ease, box-shadow 0.3s ease';
+                        const sliderPosition = parseInt(sliderButton.style.left);
+                        const threshold = slider.offsetWidth - sliderButton.offsetWidth - 10;
+                        if (sliderPosition > threshold) {
+                            // Smoothly slide to the next slide or page
+                            sliderButton.style.left = slider.offsetWidth - sliderButton.offsetWidth - 6 + 'px'; // Apply right margin
+                            setTimeout(() => {
+                                window.location.href = nextPagePath; // Redirect to the next page after sliding animation
+                            }, 300); // Adjust timing to match the sliding animation duration
+                        } else {
+                            sliderButton.style.left = '6px'; // Reset to initial left margin
+                        }
+                    }
+                }
+
+                function resetOpacity() {
+                    if (!isDragging && parseInt(sliderButton.style.left) === 6) {
+                        sliderText.style.opacity = 1;
+                    }
+                }
+            });
+
+        </script>
+</body>
+
+</html>

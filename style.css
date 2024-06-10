@@ -1,0 +1,512 @@
+/* Reset CSS */
+body {
+    background-color: #79C072;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Berkshire Swash', cursive;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    position: fixed;
+    transition: padding 0.3s ease;
+}
+
+header.shrink {
+    padding: 0.5em 2em;
+}
+
+header.shrink .logo img {
+    max-height: 40px;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+#menuButton {
+    font-size: 1.5em;
+    margin-right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.shrink #menuButton {
+    opacity: 0;
+}
+
+/* Header logo */
+
+@media (min-width: 768px) {
+    .logo img {
+        max-height: 150px;
+    }
+}
+
+@media (max-width: 767px) {
+    .logo img {
+        max-height: 120px;
+    }
+}
+
+/* Drawer (Sidebar) Styles */
+.drawer {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 180px;
+    height: 100%;
+    background-color: #79C072;
+    color: #fff;
+    transition: left 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    /* Apply Montserrat font here */
+    padding-top: 50px;
+}
+
+.drawer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.drawer ul li {
+    padding: 10px 20px;
+}
+
+.drawer ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.drawer ul li a:hover {
+    text-decoration: underline;
+}
+
+.drawer.open {
+    left: 0;
+}
+
+
+/* Home Section Styles */
+#home {
+    background-image: url('/images/home-background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+/* Birthday Content Styles */
+.birthday-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.birthday-gif {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Birthday Banner Styles */
+.birthday-desktop {
+    display: block;
+}
+
+.birthday-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .birthday-desktop {
+        display: none;
+    }
+
+    .birthday-mobile {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .birthday-desktop {
+        display: block;
+    }
+
+    .birthday-mobile {
+        display: none;
+    }
+}
+
+/* Slide Button Style */
+.slider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: transparent;
+}
+
+.slider {
+    margin-top: -200px;
+    position: relative;
+    width: 300px;
+    height: 80px;
+    background-color: #e0e0e0;
+    border-radius: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Add box-shadow for 3D effect */
+    overflow: hidden;
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    left: 6px;
+    width: 67px;
+    height: 67px;
+    background: linear-gradient(135deg, #79C072, #FBC6DA);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: left 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.slider-button:hover {
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #FBC6DA, #79C072);
+}
+
+.slider-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 60%);
+    transition: transform 0.6s ease;
+    transform: scale(0);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.slider-button:hover::before {
+    transform: scale(1);
+}
+
+.slider-text {
+    position: absolute;
+    left: 130px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 80px;
+    color: #4caf50;
+    font-weight: bold;
+    opacity: 1;
+    transition: opacity 0.3s ease, left 0.3s ease;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.left-content {
+    position: absolute;
+    top: 50%;
+    left: -40px;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #4caf50;
+    opacity: 0;
+    transition: opacity 0.3s ease, left 0.3s ease;
+    user-select: none;
+}
+
+.slider-button:hover .left-content {
+    opacity: 1;
+    left: -80px;
+}
+
+@media (max-width: 768px) {
+    .slider {
+        width: 250px;
+        height: 60px;
+    }
+
+    .slider-button {
+        width: 50px;
+        height: 50px;
+        left: 5px;
+    }
+
+    .slider-text {
+        font-size: 18px;
+        left: 80px;
+    }
+
+    .left-content {
+        font-size: 18px;
+        left: -30px;
+    }
+
+    .slider-button:hover .left-content {
+        left: -60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider {
+        width: 200px;
+        height: 60px;
+    }
+
+    .slider-button {
+        width: 47px;
+        height: 47px;
+        left: 6px;
+    }
+
+    .slider-text {
+        font-size: 45px;
+        left: 100px;
+    }
+
+    .left-content {
+        font-size: 14px;
+        left: -20px;
+    }
+
+    .slider-button:hover .left-content {
+        left: -40px;
+    }
+}
+
+
+/* Intro Section Styles */
+.intro-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('/banner/88.gif');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease-out, visibility 1s ease-out;
+}
+
+.intro-section.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Home Content Styles */
+.home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    padding: 50px;
+    background-image: url('/banner/88.gif');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease-out, visibility 1s ease-out;
+}
+
+/* Text Styles */
+.home-content h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.home-content p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+/* About Us Section Styles */
+.about-section {
+    position: relative;
+    /* Position relative to allow absolute positioning of the image */
+}
+
+.about-banner {
+    width: 100%;
+    /* Set the width to fill the container */
+    height: auto;
+    /* Automatically adjust height to maintain aspect ratio */
+    display: block;
+    margin-bottom: 2px;
+}
+
+/* Banner Styles */
+.banner-link {
+    display: block;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.banner {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: -70px;
+}
+
+.banner-desktop {
+    display: none;
+}
+
+.banner-mobile {
+    display: block;
+    margin-top: -120px;
+}
+
+@media (min-width: 992px) {
+    .banner-desktop {
+        display: block;
+    }
+
+    .banner-mobile {
+        display: none;
+    }
+}
+
+/* Main Content Styles */
+.main-content {
+    padding-top: 80px;
+}
+
+/* Stop Animation Class */
+.stop-animation {
+    animation: none !important;
+}
+
+/* Dance Section Styles */
+.dance-section {
+    position: relative;
+    /* Position relative to allow absolute positioning of the video */
+}
+
+.dance-banner {
+    width: 100%;
+    /* Set the width to fill the container */
+    height: auto;
+    /* Automatically adjust height to maintain aspect ratio */
+    display: block;
+    margin-bottom: 2px;
+
+}
+
+
+/* Styles for the Feel section */
+.feel-section {
+    position: relative;
+}
+
+.feel-banner {
+    width: 100%;
+    /* Set the width to fill the container */
+    height: auto;
+    /* Automatically adjust height to maintain aspect ratio */
+    display: block;
+    margin-bottom: 2px;
+
+}
+
+/* Styles for the Feel section */
+.juniour-section {
+    position: relative;
+}
+
+.juniour-banner {
+    width: 100%;
+    /* Set the width to fill the container */
+    height: auto;
+    /* Automatically adjust height to maintain aspect ratio */
+    display: block;
+    margin-bottom: 2px;
+}
+
+/* Styles for the Feel section */
+.rating-section {
+    position: relative;
+}
+
+.rating-banner {
+    width: 100%;
+    /* Set the width to fill the container */
+    height: auto;
+    /* Automatically adjust height to maintain aspect ratio */
+    display: block;
+    margin-bottom: 2px;
+}
+
+/* Styles for the Feel section */
+.email-section {
+    position: relative;
+}
+
+.email-banner {
+    width: 100%;
+    /* Set the width to fill the container */
+    height: auto;
+    /* Automatically adjust height to maintain aspect ratio */
+    display: block;
+    margin-bottom: 2px;
+}
+
+
+/* Styles for the Feel section */
+.footer-section {
+    position: relative;
+}
+
+.footer-banner {
+    width: 100%;
+    /* Set the width to fill the container */
+    height: auto;
+    /* Automatically adjust height to maintain aspect ratio */
+    display: block;
+}
